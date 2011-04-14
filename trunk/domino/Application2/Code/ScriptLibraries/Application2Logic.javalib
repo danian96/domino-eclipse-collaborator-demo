@@ -1,20 +1,65 @@
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE scriptlibrary SYSTEM 'xmlschemas/domino_8_5_2.dtd'>
-<scriptlibrary name='Application2Logic' xmlns='http://www.lotus.com/dxl' version='8.5'
- maintenanceversion='2.0' replicaid='C22578700039535E' hide='v3 v4strict'
- designerversion='8.5.2'>
-<noteinfo noteid='156' unid='09154251B19C839CC2257870005FAED7' sequence='3'>
-<created><datetime dst='true'>20110412T202506,79+03</datetime></created>
-<modified><datetime dst='true'>20110412T202627,01+03</datetime></modified>
-<revised><datetime dst='true'>20110412T202627,00+03</datetime></revised>
-<lastaccessed><datetime dst='true'>20110412T202627,01+03</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20110412T202506,94+03</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Andrew Kuba/O=econEXT</name></updatedby>
-<wassignedby><name>CN=Andrew Kuba/O=econEXT</name></wassignedby><code event='library'><javaproject
- class='JavaAgent.class' codepath='c:\Program Files (x86)\IBM\Lotus\Notes\Data'><java
- name='Untitled.java'>public class Untitled { 
-}</java>
-<sharedlibraryref name='ApplicationBase'/></javaproject></code>
-<item name='$JavaCompilerSource'><text>1.3</text></item>
-<item name='$JavaCompilerTarget'><text>1.2</text></item></scriptlibrary>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<scriptlibrary xmlns="http://www.lotus.com/dxl" designerversion="8.5.2" hide="v3 v4strict" maintenanceversion="2.0" name="Application2Logic" replicaid="C22578700039535E" version="8.5">
+<noteinfo noteid="156" sequence="11" unid="09154251B19C839CC2257870005FAED7">
+<created>
+<datetime dst="true">20110412T202506,79+03</datetime>
+</created>
+<modified>
+<datetime dst="true">20110414T200934,63+03</datetime>
+</modified>
+<revised>
+<datetime dst="true">20110414T200934,62+03</datetime>
+</revised>
+<lastaccessed>
+<datetime dst="true">20110414T200934,63+03</datetime>
+</lastaccessed>
+<addedtofile>
+<datetime dst="true">20110412T202506,94+03</datetime>
+</addedtofile>
+</noteinfo>
+<updatedby>
+<name>CN=Andrew Kuba/O=econEXT</name>
+</updatedby>
+<wassignedby>
+<name>CN=Andrew Kuba/O=econEXT</name>
+</wassignedby>
+<code event="library">
+<javaproject>
+<java name="aku/demo/application2/Applicator.java">package aku.demo.application2;
 
+import lotus.domino.Database;
+import lotus.domino.Document;
+import lotus.domino.View;
+import aku.demo.application.base.DemoDocument;
+
+public class Applicator {
+	private static final String FORM_APPLICATION2 = "Application2";
+	private static final String VIEW_TO_APPLY = "new.docs";
+	
+	private Database database;
+
+	public Applicator(Database database){
+		this.database = database;
+	}
+	
+	public void applyForm(String form) throws Exception{		
+		View view  = database.getView(VIEW_TO_APPLY);
+		Document doc = view.getFirstDocument();
+		while(doc!=null){
+			DemoDocument demoDoc = new DemoDocument(doc);
+			demoDoc.applyForm(FORM_APPLICATION2);
+			doc = view.getNextDocument(doc);
+		}
+	}
+}
+</java>
+<sharedlibraryref name="ApplicationBase"/>
+</javaproject>
+</code>
+<item name="$JavaCompilerSource">
+<text>1.3</text>
+</item>
+<item name="$JavaCompilerTarget">
+<text>1.2</text>
+</item>
+</scriptlibrary>

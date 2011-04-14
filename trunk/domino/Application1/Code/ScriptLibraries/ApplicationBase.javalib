@@ -1,14 +1,60 @@
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE scriptlibrary SYSTEM 'xmlschemas/domino_8_5_2.dtd'>
-<scriptlibrary name='ApplicationBase' xmlns='http://www.lotus.com/dxl' version='8.5'
- maintenanceversion='2.0' replicaid='C225787000393D2B' hide='v3 v4strict'>
-<noteinfo noteid='152' unid='811CD6F422370AC6C22578700039790A' sequence='1'>
-<created><datetime dst='true'>20110412T132745,38+03</datetime></created>
-<modified><datetime dst='true'>20110412T132745,56+03</datetime></modified>
-<revised><datetime dst='true'>20110412T132745,55+03</datetime></revised>
-<lastaccessed><datetime dst='true'>20110412T132745,56+03</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20110412T132745,56+03</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Andrew Kuba/O=econEXT</name></updatedby>
-<wassignedby><name>CN=Andrew Kuba/O=econEXT</name></wassignedby><code event='library'><javaproject
- class=''/></code></scriptlibrary>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<scriptlibrary xmlns="http://www.lotus.com/dxl" hide="v3 v4strict" maintenanceversion="2.0" name="ApplicationBase" replicaid="C225787000393D2B" version="8.5">
+<noteinfo noteid="152" sequence="4" unid="811CD6F422370AC6C22578700039790A">
+<created>
+<datetime dst="true">20110412T132745,38+03</datetime>
+</created>
+<modified>
+<datetime dst="true">20110414T195206,93+03</datetime>
+</modified>
+<revised>
+<datetime dst="true">20110414T195206,92+03</datetime>
+</revised>
+<lastaccessed>
+<datetime dst="true">20110414T195206,93+03</datetime>
+</lastaccessed>
+<addedtofile>
+<datetime dst="true">20110412T132745,56+03</datetime>
+</addedtofile>
+</noteinfo>
+<updatedby>
+<name>CN=Andrew Kuba/O=econEXT</name>
+</updatedby>
+<wassignedby>
+<name>CN=Andrew Kuba/O=econEXT</name>
+</wassignedby>
+<code event="library">
+<javaproject>
+<java name="aku/demo/application/base/DemoDocument.java">package aku.demo.application.base;
 
+import lotus.domino.Document;
+
+public class DemoDocument {
+	private static final String ITEM_FORM = "Form";
+	
+	private Document document;
+	
+	public DemoDocument(Document document){
+		this.document = document;
+	}
+	
+	public String getForm() throws Exception{
+		return document.getItemValueString(ITEM_FORM);
+	}
+	
+	public void applyForm(String form) throws Exception{
+		document.replaceItemValue(ITEM_FORM, form);
+		document.computeWithForm(true, false);
+		document.save(true);
+	}
+}
+</java>
+</javaproject>
+</code>
+<item name="$JavaCompilerSource">
+<text>1.3</text>
+</item>
+<item name="$JavaCompilerTarget">
+<text>1.2</text>
+</item>
+</scriptlibrary>
