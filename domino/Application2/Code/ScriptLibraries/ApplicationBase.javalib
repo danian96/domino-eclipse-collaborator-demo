@@ -2,13 +2,39 @@
 <!DOCTYPE scriptlibrary SYSTEM 'xmlschemas/domino_8_5_2.dtd'>
 <scriptlibrary name='ApplicationBase' xmlns='http://www.lotus.com/dxl' version='8.5'
  maintenanceversion='2.0' replicaid='C22578700039535E' hide='v3 v4strict'>
-<noteinfo noteid='15a' unid='860E0957971F9C59C2257870005FAED8' sequence='1'>
-<created><datetime dst='true'>20110412T202506,80+03</datetime></created>
-<modified><datetime dst='true'>20110412T202507,11+03</datetime></modified>
-<revised><datetime dst='true'>20110412T202507,10+03</datetime></revised>
-<lastaccessed><datetime dst='true'>20110412T202507,11+03</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20110412T202507,11+03</datetime></addedtofile></noteinfo>
+<noteinfo noteid='16e' unid='D8837A2A0045519EC2257872005D7B73' sequence='1'>
+<created><datetime dst='true'>20110414T200104,51+03</datetime></created>
+<modified><datetime dst='true'>20110414T200104,62+03</datetime></modified>
+<revised><datetime dst='true'>20110414T200104,61+03</datetime></revised>
+<lastaccessed><datetime dst='true'>20110414T200104,62+03</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20110414T200104,62+03</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Andrew Kuba/O=econEXT</name></updatedby>
 <wassignedby><name>CN=Andrew Kuba/O=econEXT</name></wassignedby><code event='library'><javaproject
- class=''/></code></scriptlibrary>
+ class='JavaAgent.class' codepath='c:\Program Files (x86)\IBM\Lotus\Notes\Data'><java
+ name='aku/demo/application/base/DemoDocument.java'>package aku.demo.application.base;
+
+import lotus.domino.Document;
+
+public class DemoDocument {
+	private static final String ITEM_FORM = "Form";
+	
+	private Document document;
+	
+	public DemoDocument(Document document){
+		this.document = document;
+	}
+	
+	public String getForm() throws Exception{
+		return document.getItemValueString(ITEM_FORM);
+	}
+	
+	public void applyForm(String form) throws Exception{
+		document.replaceItemValue(ITEM_FORM, form);
+		document.computeWithForm(true, false);
+		document.save(true);
+	}
+}
+</java></javaproject></code>
+<item name='$JavaCompilerSource'><text>1.3</text></item>
+<item name='$JavaCompilerTarget'><text>1.2</text></item></scriptlibrary>
 
