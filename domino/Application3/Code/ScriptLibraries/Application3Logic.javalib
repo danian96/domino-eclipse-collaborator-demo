@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE scriptlibrary SYSTEM 'xmlschemas/domino_8_5_2.dtd'>
+<scriptlibrary name='Application3Logic' xmlns='http://www.lotus.com/dxl' version='8.5'
+ maintenanceversion='2.0' replicaid='C225787000395DCD' hide='v3 v4strict'
+ designerversion='8.5.2'>
+<noteinfo noteid='156' unid='A138F7302A67CB22C2257870005FB952' sequence='3'>
+<created><datetime dst='true'>20110412T202533,62+03</datetime></created>
+<modified><datetime dst='true'>20110412T202657,06+03</datetime></modified>
+<revised><datetime dst='true'>20110412T202657,05+03</datetime></revised>
+<lastaccessed><datetime dst='true'>20110412T202657,06+03</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20110412T202533,88+03</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Andrew Kuba/O=econEXT</name></updatedby>
+<wassignedby><name>CN=Andrew Kuba/O=econEXT</name></wassignedby><code event='library'><javaproject
+ class='JavaAgent.class' codepath='c:\Program Files (x86)\IBM\Lotus\Notes\Data'><java
+ name='Untitled.java'>public class Untitled { 
+}</java>
+<sharedlibraryref name='ApplicationBase'/></javaproject></code>
+<item name='$JavaCompilerSource'><text>1.3</text></item>
+<item name='$JavaCompilerTarget'><text>1.2</text></item></scriptlibrary>
+
