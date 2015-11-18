@@ -1,0 +1,1 @@
+this project demonstrate the usage of domino-eclipse-collaborator
